@@ -54,14 +54,16 @@ wait_for_jobs() {
     local job_ids=("$@")
     local failed_jobs=0
     
+    # Process each job using the existing wait_for_job function
     for job_id in "${job_ids[@]}"; do
-        local state=$(sacct -j "$job_id" -n -o State | head -n 1 | awk '{print $1}')
-        if [[ "$state" != "COMPLETED" ]]; then
-            echo "Job $job_id failed with state: $state"
+        # Call wait_for_job for each job ID
+        # Using job ID as the step name for simplicity, but can be customized if needed
+        if ! wait_for_job "$job_id" "Job $job_id"; then
             failed_jobs=$((failed_jobs+1))
         fi
     done
     
+    # Final status report
     if [ $failed_jobs -gt 0 ]; then
         echo "Warning: $failed_jobs jobs failed."
         return 1

@@ -43,7 +43,7 @@ cp ./dnaapler/pre-polish/dnaapler_reoriented.fasta ./${TMP_DIR}/draft_dnaapler.f
 
 ######### Run medaka long read polishing#########
 # may need to change the model depending on the data
-singularity exec ${MEDAKA_CONTAINER} medaka_consensus -i ../${FILTERED_READS_DIR}/_nanopore_filtered.fastq.gz -d ./${TMP_DIR}/draft_dnaapler.fasta -o medaka -t ${THREADS} -m ${MEDAKA_MODEL} --bacteria
+singularity exec ${MEDAKA_CONTAINER} medaka_consensus -i ../${FILTERED_READS_DIR}/nanopore_filtered.fastq.gz -d ./${TMP_DIR}/draft_dnaapler.fasta -o medaka -t ${THREADS} -m ${MEDAKA_MODEL} --bacteria
 cp ./medaka/consensus.fasta ./${TMP_DIR}/draft_medaka.fasta
 
 ######### Run polypolish short read polishing#########
