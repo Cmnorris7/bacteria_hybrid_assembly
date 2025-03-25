@@ -39,7 +39,7 @@ cp ../${AUTOCYCLER_OUT_DIR}/consensus_assembly.fasta ./${TMP_DIR}/draft.fasta
 ######### Rotate the assembly #########
 singularity exec ${DNAAPLER_CONTAINER} dnaapler all --autocomplete mystery --seed_value 13 -i ./${TMP_DIR}/draft.fasta -o ./dnaapler/pre-polish/ -t ${THREADS}
 rm ./${TMP_DIR}/draft.fasta
-cp ./dnaapler/pre-polish/_reoriented.fasta ./${TMP_DIR}/draft_dnaapler.fasta
+cp ./dnaapler/pre-polish/dnaapler_reoriented.fasta ./${TMP_DIR}/draft_dnaapler.fasta
 
 ######### Run medaka long read polishing#########
 # may need to change the model depending on the data

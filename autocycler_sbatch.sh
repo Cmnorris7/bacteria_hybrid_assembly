@@ -21,4 +21,4 @@ module load parallel
 # Get the nanopore filtered reads
 nanopore=${FILTERED_READS_DIR}/nanopore_filtered.fastq.gz
 
-${HOME}/git/_github/Autocycler/pipelines/Automated_Autocycler_Bash_script_by_Ryan_Wick/autocycler_full.sh ${nanopore} 12 4
+${SCRIPT_DIR}/autocycler_assembly_pipeline.sh ${nanopore} 16 4

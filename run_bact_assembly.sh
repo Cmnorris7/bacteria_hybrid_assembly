@@ -10,9 +10,12 @@
 # Bacterial Hybrid Assembly Pipeline - Master Script
 # This script coordinates the execution of the complete assembly pipeline
 module load slurm
+module load nextflow
 
 # Source the config file
 export SCRIPT_DIR="$HOME/git/gitlab/bacteria_hybrid_assembly"
+# add these to PATH ${HOME}/git/_github/Autocycler/scripts:${HOME}/git/_github/Autocycler/src:${HOME}/git/_github/Autocycler/target/release
+export PATH="$PATH:${HOME}/git/_github/Autocycler/scripts:${HOME}/git/_github/Autocycler/src:${HOME}/git/_github/Autocycler/target/release"
 echo "SCRIPT_DIR: $SCRIPT_DIR"
 source "${SCRIPT_DIR}/config.sh"
 
@@ -23,13 +26,13 @@ set -e
 set -x
 
 # Set up log directory and file
-log_file = ${LOGS_DIR}/run_bact_assembly.log
+log_file="$LOGS_DIR/run_bact_assembly.log"
 
 
 
 # Log function
 log() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a ${log_file}
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$log_file"
 }
 
 # Function to wait for a job to complete
@@ -85,6 +88,7 @@ if [ "$(basename "$(pwd)")" != "$sample_name" ]; then
     mkdir -p $sample_name
     mv *fastq* $sample_name
     cd $sample_name
+    log_file="../$log_file"
 fi
 
 # Step 1: Read QC
