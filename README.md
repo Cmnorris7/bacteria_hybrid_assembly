@@ -1,6 +1,6 @@
 # Bacterial Hybrid Assembly Pipeline
 
-A pipeline for bacterial genome long-read assembly, with Illumina short read polishing. Primary assembly tool is [Autocycler](https://github.com/rrwick/Autocycler).
+A pipeline for bacterial genome long-read assembly, followed by Illumina short read polishing. Primary assembly tool is [Autocycler](https://github.com/rrwick/Autocycler).
 
 ## Overview
 
@@ -13,7 +13,7 @@ High-quality nanopore reads are essential -- pipeline assembles long reads, then
 Clone this repository & Autocycler repository:
 
 ```bash
-cd ~/git/gitlab && git clone
+cd ~/git/gitlab && git clone git@arsiaam0vgit10.usda.net:cbis_bioinfo/bacteria_hybrid_assembly.git &&
 cd ~/git/_github && git clone https://github.com/rrwick/Autocycler.git
 ```
 
@@ -53,7 +53,7 @@ sbatch ${HOME}/git/gitlab/bacteria_hybrid_assembly/run_bact_assembly.sh
 
     - Uses [Autocycler](https://github.com/rrwick/Autocycler) for initial assembly from long reads
 
-        > **_Note_:** Autocycler akes ~3.5 hours to run with current config.
+        > **_Note_:** Autocycler spawns ~28 assembly jobs via slurm. Canu takes the longest.
 
 3. **Assembly Polishing** (`polish_sbatch.sh`)
 
@@ -91,5 +91,4 @@ Key parameters and environments can be modified in `config.sh`:
 
 ## Future Work
 
--   Make new autocycler script to split assemblies into slurm jobs. Will speed up pipeline significantly.
--   Make script to configure all conda and singularity dependencies on a new system.
+-   Make script to configure all conda and singularity dependencies on a new system. Add dependency specifics to repo.
