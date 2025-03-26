@@ -40,6 +40,7 @@ echo "fastp complete."
 
 #################### Filtlong for nanopore reads ####################
 echo "Using filtlong to filter Nanopore reads.."
+conda activate ${CONDA_BASE}/envs/filtlong 
 # if illumina reads are good, use this command
 # ~/git/_github/Filtlong/bin/filtlong -1 ./${FILTERED_READS_DIR}/R1_filtered.fastq.gz \
 #   -2 ./${FILTERED_READS_DIR}/R2_filtered.fastq.gz \
@@ -48,7 +49,7 @@ echo "Using filtlong to filter Nanopore reads.."
 
 # if illumina reads are bad, use this command
 ## defaulting to this command to be conservative
-~/git/_github/Filtlong/bin/filtlong --min_length 1000 --keep_percent 90 --target_bases 500000000 \
+filtlong --min_length 1000 --keep_percent 90 --target_bases 500000000 \
   ${NANOPORE_FILE} | gzip > ./${FILTERED_READS_DIR}/nanopore_filtered.fastq.gz
 echo "filtlong complete."
 
