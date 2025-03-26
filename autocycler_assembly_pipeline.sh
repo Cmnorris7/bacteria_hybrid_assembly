@@ -89,25 +89,25 @@ for i in 01 02 03 04; do
     echo "Submitting assembly jobs for sample $i"
     
     # Submit each assembler job and capture the job ID
-    canu_id=$(sbatch --parsable --job-name=canu_"$i" --time=12:00:00 --mem=128000 --ntasks=1 --cpus-per-task=$threads \
+    canu_id=$(sbatch --parsable --job-name=canu_"$i" --time=12:00:00 --output=slurm_canu_"$i"_%j.log --mem=128000 --ntasks=1 --cpus-per-task=$threads \
               --wrap "canu.sh subsampled_reads/sample_$i.fastq assemblies/canu_$i $threads $genome_size")
     
-    flye_id=$(sbatch --parsable --job-name=flye_"$i" --time=2:00:00 --mem=64000 --ntasks=1 --cpus-per-task=$threads \
+    flye_id=$(sbatch --parsable --job-name=flye_"$i" --time=2:00:00 --output=slurm_flye_"$i"_%j.log --mem=64000 --ntasks=1 --cpus-per-task=$threads \
               --wrap "flye.sh subsampled_reads/sample_$i.fastq assemblies/flye_$i $threads $genome_size")
     
-    miniasm_id=$(sbatch --parsable --job-name=miniasm_"$i" --time=1:00:00 --mem=64000 --ntasks=1 --cpus-per-task=$threads \
+    miniasm_id=$(sbatch --parsable --job-name=miniasm_"$i" --time=1:00:00 --output=slurm_miniasm_"$i"_%j.log --mem=64000 --ntasks=1 --cpus-per-task=$threads \
                 --wrap "miniasm.sh subsampled_reads/sample_$i.fastq assemblies/miniasm_$i $threads $genome_size")
     
-    necat_id=$(sbatch --parsable --job-name=necat_"$i" --time=2:00:00 --mem=64000 --ntasks=1 --cpus-per-task=$threads \
+    necat_id=$(sbatch --parsable --job-name=necat_"$i" --time=2:00:00 --output=slurm_necat_"$i"_%j.log --mem=64000 --ntasks=1 --cpus-per-task=$threads \
               --wrap "necat.sh subsampled_reads/sample_$i.fastq assemblies/necat_$i $threads $genome_size")
     
-    nextdenovo_id=$(sbatch --parsable --job-name=nextdenovo_"$i" --time=2:00:00 --mem=64000 --ntasks=1 --cpus-per-task=$threads \
+    nextdenovo_id=$(sbatch --parsable --job-name=nextdenovo_"$i" --time=2:00:00 --output=slurm_nexdenovo_"$i"_%j.log --mem=64000 --ntasks=1 --cpus-per-task=$threads \
                    --wrap "nextdenovo.sh subsampled_reads/sample_$i.fastq assemblies/nextdenovo_$i $threads $genome_size")
     
-    raven_id=$(sbatch --parsable --job-name=raven_"$i" --time=1:00:00 --mem=64000 --ntasks=1 --cpus-per-task=$threads \
+    raven_id=$(sbatch --parsable --job-name=raven_"$i" --time=1:00:00 --output=slurm_raven_"$i"_%j.log --mem=64000 --ntasks=1 --cpus-per-task=$threads \
               --wrap "raven.sh subsampled_reads/sample_$i.fastq assemblies/raven_$i $threads $genome_size")
     
-    metamdbg_id=$(sbatch --parsable --job-name=metamdbg_"$i" --time=2:00:00 --mem=64000 --ntasks=1 --cpus-per-task=$threads \
+    metamdbg_id=$(sbatch --parsable --job-name=metamdbg_"$i" --time=2:00:00 --output=slurm_metamdbg_"$i"_%j.log --mem=64000 --ntasks=1 --cpus-per-task=$threads \
                  --wrap "metamdbg.sh subsampled_reads/sample_$i.fastq assemblies/metamdbg_$i $threads $genome_size")
     
     # Add all job IDs to our array
