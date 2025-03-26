@@ -60,7 +60,7 @@ rm *.amb *.ann *.bwt *.pac *.sa *.sam
 conda activate ${PYPOLCA_ENV}
 
 pypolca run -a ./${TMP_DIR}/draft_polypolish.fasta -1 ../${FILTERED_READS_DIR}/R1_filtered.fastq.gz -2 ../${FILTERED_READS_DIR}/R2_filtered.fastq.gz -t ${THREADS} -o pypolca --careful
-cp ./pypolca/corrected.fasta ./${TMP_DIR}/draft_pypolca.fasta
+cp ./pypolca/pypolca_corrected.fasta ./${TMP_DIR}/draft_pypolca.fasta
 
 ######### Fix fasta naming#########
 # run the script to fix the fasta naming and add lengths

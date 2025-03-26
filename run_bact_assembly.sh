@@ -139,7 +139,10 @@ fi
 log "Pipeline completed successfully! Final assembly is in polish/*_final_assembly.fasta"
 log "Assembly statistics are in nanopore_map_assembly_stats.tsv"
 
-# Create a summary file
-echo "Pipeline completed successfully!" > pipeline_summary.txt
-echo "Final assembly is in polish/*_final_assembly.fasta" >> pipeline_summary.txt
-echo "Assembly statistics are in nanopore_map_assembly_stats.tsv" >> pipeline_summary.txt
+# Clean up intermediate files
+rm ./fastp* 
+mv autocycler.stderr ./autocycler_out
+rm -r ./polish/tmp
+mv .slurm* ../${LOGS_DIR}
+
+
