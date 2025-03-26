@@ -2,8 +2,8 @@
 
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=48
-#SBATCH --mem=0
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8G
 #SBATCH --job-name="bact_assembly_autocycler"
 #SBATCH --partition=prod-compute,prod-compute-mem
 #SBATCH --export=NONE

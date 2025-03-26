@@ -143,6 +143,7 @@ log "Assembly statistics are in nanopore_map_assembly_stats.tsv"
 rm ./fastp* 
 mv autocycler.stderr ./autocycler_out
 rm -r ./polish/tmp
-mv .slurm* ../${LOGS_DIR}
+mv ./slurm* ../${LOGS_DIR}
+mv ../*log ../${LOGS_DIR}
 
 
