@@ -1,0 +1,14 @@
+name: qc_polish_autocycler
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - fastp
+  - filtlong
+  - fastqc
+  - dnaapler
+  - medaka
+  - polypolish
+  - pypolca
+  - minimap2
+  - samtools
