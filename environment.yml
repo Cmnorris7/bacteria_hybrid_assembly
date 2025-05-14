@@ -1,4 +1,4 @@
-name: qc_polish_autocycler
+name: qc_polish_hybrid
 channels:
   - conda-forge
   - bioconda

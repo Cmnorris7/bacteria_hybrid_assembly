@@ -10,11 +10,14 @@ High-quality nanopore reads are essential -- pipeline assembles long reads, then
 
 ## Setup
 
-Clone this repository & Autocycler repository:
+### Conda install
+
+Navigate to a directory where you wish to clone this repo, then run the following:
 
 ```bash
-cd ~/git/gitlab && git clone git@arsiaam0vgit10.usda.net:cbis_bioinfo/bacteria_hybrid_assembly.git &&
-cd ~/git/_github && git clone https://github.com/rrwick/Autocycler.git
+git clone https://github.com/Cmnorris7/bacteria_hybrid_assembly.git
+cd .bacteria_hybrid_assembly/
+bash ./setup_environments.sh
 ```
 
 > **_Note_:** Currently configured for use on the NCAH HPC cluster only. All conda environments stored in `/project/shared/miniconda3/envs/`, all singularity containers stored in `/project/scratch/singularity/`
