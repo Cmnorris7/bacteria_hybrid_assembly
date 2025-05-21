@@ -16,11 +16,9 @@ Navigate to a directory where you wish to clone this repo, then run the followin
 
 ```bash
 git clone https://github.com/Cmnorris7/bacteria_hybrid_assembly.git
-cd .bacteria_hybrid_assembly/
+cd ./bacteria_hybrid_assembly/
 bash ./setup_environments.sh
 ```
-
-> **_Note_:** Currently configured for use on the NCAH HPC cluster only. All conda environments stored in `/project/shared/miniconda3/envs/`, all singularity containers stored in `/project/scratch/singularity/`
 
 ## To Run
 
