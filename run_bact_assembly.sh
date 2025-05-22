@@ -47,6 +47,9 @@ if [ "$sample_name" == "$file" ]; then
     sample_name=$(basename "${file}" | cut -d'.' -f1)
 fi
 
+# store sample name in environment variable
+export SAMPLE_NAME=$sample_name
+
 # if directory not the same as sample_name, make sample_name directory and move files to it
 if [ "$(basename "$(pwd)")" != "$sample_name" ]; then
     log "Creating directory $sample_name and moving files into it"
