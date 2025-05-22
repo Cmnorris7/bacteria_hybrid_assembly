@@ -120,7 +120,7 @@ else
 fi
 
 # Pipeline complete
-log "Pipeline completed successfully! Final assembly is in polish/*_final_assembly.fasta"
+log "Pipeline completed successfully! Final assembly is in polish/${SAMPLE_NAME}_final_assembly.fasta"
 log "Assembly statistics are in nanopore_map_assembly_stats.tsv"
 
 # Clean up intermediate files
