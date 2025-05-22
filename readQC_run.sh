@@ -26,7 +26,7 @@ echo "Using fastp to filter Illumina reads.."
 fastp -i ${R1_FILE} -I ${R2_FILE} \
       -o ./${FILTERED_READS_DIR}/R1_filtered.fastq.gz \
       -O ./${FILTERED_READS_DIR}/R2_filtered.fastq.gz \
-      --length_required 140 --thread $((THREADS-2))
+      --length_required $SHORT_READ_LENGTH --thread $((THREADS-2))
 echo "fastp complete."
 
 #################### Filtlong for nanopore reads ####################

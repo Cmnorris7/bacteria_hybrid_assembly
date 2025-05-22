@@ -2,6 +2,7 @@
 
 # Script directory - the directory where all pipeline scripts are located
 export SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+export AUTOCYCLER_DIR="$(readlink -f "${SCRIPT_DIR}/../Autocycler")"
 
 # Pipeline directories
 export POLISH_DIR="polish"
@@ -24,6 +25,7 @@ export SORT_FASTA_SCRIPT="${SCRIPT_DIR}/sort_fasta_add_length.py"
 export MEDAKA_MODEL="r1041_e82_400bps_hac_v4.3.0"
 export THREADS=$(nproc --all) # will default to all available threads
 # export THREADS=24
+export SHORT_READ_LENGTH=90
 
 # File patterns
 export NANOPORE_PATTERN="*nanopore*fastq.gz"

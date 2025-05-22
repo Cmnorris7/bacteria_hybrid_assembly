@@ -33,7 +33,7 @@ bash ./setup_environments.sh
 From inside the directory containing your reads, run the following command:
 
 ```bash
-sbatch ${HOME}/git/gitlab/bacteria_hybrid_assembly/run_bact_assembly.sh
+bash run_bact_assembly.sh
 ```
 
 ## Pipeline Steps

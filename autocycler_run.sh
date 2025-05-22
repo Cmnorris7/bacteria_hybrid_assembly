@@ -19,4 +19,4 @@ echo "Total threads: $THREADS"
 echo "Threads per job: $THREADS_DIV4"
 echo "Number of parallel jobs: $ASSEMBLER_THREADS"
 
-${AUTOCYCLER_DIR}/pipelines/Automated_Autocycler_Bash_script_by_Ryan_wick/autocycler_full.sh ${nanopore} $THREADS_DIV4 $ASSEMBLER_THREADS
+${AUTOCYCLER_DIR}/pipelines/Automated_Autocycler_Bash_script_by_Ryan_Wick/autocycler_full.sh ${nanopore} $THREADS_DIV4 $ASSEMBLER_THREADS

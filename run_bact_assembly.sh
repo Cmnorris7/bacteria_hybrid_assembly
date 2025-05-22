@@ -3,9 +3,8 @@
 # Bacterial Hybrid Assembly Pipeline - Master Script
 
 # Source the config file
-export SCRIPT_DIR="$HOME/git/gitlab/bacteria_hybrid_assembly"
+export SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 # add these to PATH ${HOME}/git/_github/Autocycler/scripts:${HOME}/git/_github/Autocycler/src:${HOME}/git/_github/Autocycler/target/release
-export PATH="$PATH:${HOME}/git/_github/Autocycler/scripts:${HOME}/git/_github/Autocycler/src:${HOME}/git/_github/Autocycler/target/release"
 echo "SCRIPT_DIR: $SCRIPT_DIR"
 source "${SCRIPT_DIR}/config.sh"
 
