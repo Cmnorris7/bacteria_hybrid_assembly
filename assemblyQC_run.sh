@@ -14,7 +14,7 @@ echo "ASSEMBLY_QC_DIR: $ASSEMBLY_QC_DIR"
 final=${POLISH_DIR}/${SAMPLE_NAME}_final_assembly.fasta
 
 # Get the nanopore file from filtered_reads directory
-nanopore=${FILTERED_READS_DIR}/${SAMPLE_NAME}_nanopore_filtered.fastq.gz
+nanopore=${FILTERED_READS_DIR}/nanopore_filtered.fastq.gz
 
 # Create output directory
 mkdir -p ${ASSEMBLY_QC_DIR}

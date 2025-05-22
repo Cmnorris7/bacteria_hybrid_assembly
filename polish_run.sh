@@ -52,4 +52,4 @@ cp ${POLISH_DIR}/pypolca/pypolca_corrected.fasta ./${WORKDIR}/draft_pypolca.fast
 
 ######### Fix fasta naming#########
 # run the script to fix the fasta naming and add lengths
-python3 ${SORT_FASTA_SCRIPT} ${WORKDIR}/draft_pypolca.fasta ${POLISH_DIR}/final_assembly.fasta
+python3 ${SORT_FASTA_SCRIPT} ${WORKDIR}/draft_pypolca.fasta ${POLISH_DIR}/${SAMPLE_NAME}_final_assembly.fasta
