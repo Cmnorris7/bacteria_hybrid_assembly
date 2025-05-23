@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script directory - the directory where all pipeline scripts are located
-export SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+export SCRIPT_DIR="$(readlink -f "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/..")"
 export AUTOCYCLER_DIR="$(readlink -f "${SCRIPT_DIR}/../Autocycler")"
 
 # Pipeline directories
@@ -18,8 +18,8 @@ export AUTOCYCLER_ENV="${CONDA_BASE}/envs/autocycler"
 export QC_ENV="${CONDA_BASE}/envs/qc_polish_hybrid"
 
 # Custom scripts
-export MAP_STATS_SCRIPT="${SCRIPT_DIR}/assemblyQC_coverage_stats.sh"
-export SORT_FASTA_SCRIPT="${SCRIPT_DIR}/sort_fasta_add_length.py"
+export MAP_STATS_SCRIPT="${SCRIPT_DIR}/src/assemblyQC_coverage_stats.sh"
+export SORT_FASTA_SCRIPT="${SCRIPT_DIR}/src/sort_fasta_add_length.py"
 
 # Workflow parameters
 export MEDAKA_MODEL="r1041_e82_400bps_hac_v4.3.0"

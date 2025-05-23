@@ -3,7 +3,7 @@
 # This script will clone Autocycler repo and setup conda environments
 
 # Create qc_polish_hybrid conda environment
-conda env create -y --file environment.yml -n qc_polish_hybrid 
+conda env create -y --file ./config/environment.yml -n qc_polish_hybrid 
 
 # Clone Autocycler repo
 cd ../ && git clone https://github.com/rrwick/Autocycler.git

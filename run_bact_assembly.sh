@@ -6,7 +6,7 @@
 export SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 # add these to PATH ${HOME}/git/_github/Autocycler/scripts:${HOME}/git/_github/Autocycler/src:${HOME}/git/_github/Autocycler/target/release
 echo "SCRIPT_DIR: $SCRIPT_DIR"
-source "${SCRIPT_DIR}/config.sh"
+source "${SCRIPT_DIR}/config/config.sh"
 
 # Exit on error
 set -e
@@ -64,7 +64,7 @@ log "Step 1: Running read quality control"
 log "Starting Read QC process locally"
 
 # Execute the script directly
-bash ${SCRIPT_DIR}/readQC_run.sh
+bash ${SCRIPT_DIR}/src/readQC_run.sh
 
 # Check if the command completed successfully
 if [ $? -eq 0 ]; then
@@ -79,7 +79,7 @@ log "Step 2: Running Autocycler assembly"
 log "Starting Autocycler assembly process locally"
 
 # Execute the script directly
-bash ${SCRIPT_DIR}/autocycler_run.sh
+bash ${SCRIPT_DIR}/src/autocycler_run.sh
 
 # Check if the command completed successfully
 if [ $? -eq 0 ]; then
@@ -94,7 +94,7 @@ log "Step 3: Running assembly polishing"
 log "Starting assembly polishing process locally"
 
 # Execute the script directly
-bash ${SCRIPT_DIR}/polish_run.sh
+bash ${SCRIPT_DIR}/src/polish_run.sh
 
 # Check if the command completed successfully
 if [ $? -eq 0 ]; then
@@ -109,7 +109,7 @@ log "Step 4: Running assembly quality assessment"
 log "Starting assembly quality assessment process locally"
 
 # Execute the script directly
-bash ${SCRIPT_DIR}/assemblyQC_run.sh
+bash ${SCRIPT_DIR}/src/assemblyQC_run.sh
 
 # Check if the command completed successfully
 if [ $? -eq 0 ]; then
