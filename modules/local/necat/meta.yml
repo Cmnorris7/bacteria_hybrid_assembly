@@ -1,0 +1,52 @@
+---
+name: "necat"
+description: "Assemble noisy Oxford Nanopore reads with NECAT"
+keywords:
+  - assembly
+  - nanopore
+  - long reads
+tools:
+  - necat:
+      description: "Error correction and de novo assembly of noisy long reads"
+      homepage: "https://github.com/xiaochuanle/NECAT"
+      documentation: "https://github.com/xiaochuanle/NECAT"
+      licence:
+        - "GPL-3.0"
+input:
+  - - meta:
+        type: map
+        description: "Sample metadata, for example [id: 'sample1']"
+    - reads:
+        type: file
+        description: "Oxford Nanopore reads in FASTQ format"
+        pattern: "*.{fastq,fq,fastq.gz,fq.gz}"
+  - genome_size:
+      type: integer
+      description: "Estimated haploid genome size in bases"
+output:
+  assembly:
+    - - meta:
+          type: map
+          description: "Sample metadata"
+      - "*.fasta.gz":
+          type: file
+          description: "Polished NECAT assembly"
+          pattern: "*.fasta.gz"
+  log:
+    - - meta:
+          type: map
+          description: "Sample metadata"
+      - "*.necat.log":
+          type: file
+          description: "NECAT execution log"
+          pattern: "*.necat.log"
+  versions_necat:
+    - - "${task.process}":
+          type: string
+          description: "Process name"
+      - necat:
+          type: string
+          description: "Tool name"
+      - "0.0.1_update20200803":
+          type: string
+          description: "Tool version"

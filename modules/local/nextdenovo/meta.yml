@@ -1,0 +1,55 @@
+---
+name: "nextdenovo"
+description: "Assemble long reads with NextDenovo"
+keywords:
+  - assembly
+  - nanopore
+  - long reads
+tools:
+  - nextdenovo:
+      description: "Fast and accurate de novo assembler for long reads"
+      homepage: "https://github.com/Nextomics/NextDenovo"
+      documentation: "https://nextdenovo.readthedocs.io/"
+      licence:
+        - "GPL-3.0"
+input:
+  - - meta:
+        type: map
+        description: "Sample metadata, for example [id: 'sample1']"
+    - reads:
+        type: file
+        description: "Long reads in FASTQ format"
+        pattern: "*.{fastq,fq,fastq.gz,fq.gz}"
+  - genome_size:
+      type: integer
+      description: "Estimated haploid genome size in bases"
+  - read_type:
+      type: string
+      description: "NextDenovo read type: ont, clr, or hifi"
+output:
+  assembly:
+    - - meta:
+          type: map
+          description: "Sample metadata"
+      - "*.nextdenovo.fasta":
+          type: file
+          description: "Unpolished NextDenovo assembly"
+          pattern: "*.nextdenovo.fasta"
+  log:
+    - - meta:
+          type: map
+          description: "Sample metadata"
+      - "*.nextdenovo.log":
+          type: file
+          description: "NextDenovo execution log"
+          pattern: "*.nextdenovo.log"
+  versions_nextdenovo:
+    - - "${task.process}":
+          type: string
+          description: "Process name"
+      - nextdenovo:
+          type: string
+          description: "Tool name"
+      - "nextDenovo -v":
+          type: eval
+          description: "Tool version"

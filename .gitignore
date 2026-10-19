@@ -1,0 +1,6 @@
+.nextflow*
+work/
+results/
+.module*
+.modules-validation*
+.module-validation-work/

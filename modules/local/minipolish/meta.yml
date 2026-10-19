@@ -1,0 +1,56 @@
+---
+name: "minipolish"
+description: "Polish a Miniasm assembly graph with long reads"
+keywords:
+  - polishing
+  - miniasm
+  - nanopore
+tools:
+  - minipolish:
+      description: "Racon polishing of Miniasm assemblies"
+      homepage: "https://github.com/rrwick/Minipolish"
+      documentation: "https://github.com/rrwick/Minipolish"
+      licence:
+        - "GPL-3.0"
+input:
+  - - meta:
+        type: map
+        description: "Sample metadata, for example [id: 'sample1']"
+    - reads:
+        type: file
+        description: "Long reads used for polishing"
+        pattern: "*.{fastq,fq,fastq.gz,fq.gz,fasta,fa,fasta.gz,fa.gz}"
+    - gfa:
+        type: file
+        description: "Miniasm assembly graph"
+        pattern: "*.gfa.gz"
+  - minimap2_preset:
+      type: string
+      description: "Minimap2 mapping preset"
+output:
+  assembly:
+    - - meta:
+          type: map
+          description: "Sample metadata"
+      - "*.fasta.gz":
+          type: file
+          description: "Polished assembly"
+          pattern: "*.fasta.gz"
+  gfa:
+    - - meta:
+          type: map
+          description: "Sample metadata"
+      - "*.gfa.gz":
+          type: file
+          description: "Polished assembly graph"
+          pattern: "*.gfa.gz"
+  versions_minipolish:
+    - - "${task.process}":
+          type: string
+          description: "Process name"
+      - minipolish:
+          type: string
+          description: "Tool name"
+      - "minipolish --version":
+          type: eval
+          description: "Tool version"

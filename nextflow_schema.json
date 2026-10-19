@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Cmnorris7/bacteria_hybrid_assembly/nextflow_schema.json",
+  "title": "Bacterial hybrid assembly pipeline parameters",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "string",
+      "format": "file-path",
+      "exists": true,
+      "description": "CSV samplesheet with sample, long_reads, short_reads_1, and short_reads_2 columns"
+    },
+    "outdir": {
+      "type": "string",
+      "default": "results",
+      "description": "Directory for published results and execution reports"
+    },
+    "genome_size": {
+      "type": "string",
+      "pattern": "^[0-9]+([.][0-9]+)?[kKmMgG]?$",
+      "default": "5m",
+      "description": "Expected haploid genome size, for example 5m"
+    },
+    "medaka_model": {
+      "type": "string",
+      "minLength": 1,
+      "default": "r1041_e82_400bps_hac_v4.3.0",
+      "description": "Medaka model matching the Nanopore basecaller and chemistry"
+    },
+    "long_read_mode": {
+      "type": "string",
+      "enum": ["nano-hq", "nano-raw"],
+      "default": "nano-hq",
+      "description": "Nanopore read mode used for overlap and final mapping presets"
+    },
+    "assemblers": {
+      "type": "string",
+      "pattern": "^(flye|miniasm|raven|metamdbg|canu|necat|nextdenovo)(,(flye|miniasm|raven|metamdbg|canu|necat|nextdenovo))*$",
+      "default": "flye,miniasm,raven",
+      "description": "Comma-separated Autocycler assembler set; at least three distinct assemblers are required"
+    },
+    "autocycler_subsamples": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 16,
+      "default": 4,
+      "description": "Number of Autocycler long-read subsets"
+    },
+    "help": {
+      "type": "boolean",
+      "default": false,
+      "description": "Display command-line help"
+    }
+  },
+  "additionalProperties": true,
+  "required": ["input"]
+}
